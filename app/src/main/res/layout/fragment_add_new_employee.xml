@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="addNewEmployeeViewModel"
+            type="com.example.roomsample.viewmodels.AddNewEmployeeViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp"
+            tools:context=".ui.AddNewEmployeeFragment">
+
+            <!-- TODO: Update blank fragment layout -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:hint="@string/fName"
+                android:text="@={addNewEmployeeViewModel.fName}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/mName"
+                android:text="@={addNewEmployeeViewModel.mName}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/lName"
+                android:text="@={addNewEmployeeViewModel.lName}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/age"
+                android:text="@={addNewEmployeeViewModel.age}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/department"
+
+                android:text="@={addNewEmployeeViewModel.department}" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:onClick="@{()->addNewEmployeeViewModel.saveEmployeeData(saveButton)}"
+                android:text="@string/save"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

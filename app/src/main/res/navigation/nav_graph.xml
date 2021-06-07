@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/employeeListFragment"
+        android:name="com.example.roomsample.ui.EmployeeListFragment"
+        android:label="Employee list"
+        tools:layout="@layout/fragment_employee_list">
+        <action
+            android:id="@+id/action_employeeListFragment_to_addNewEmployeeFragment"
+            app:destination="@id/addNewEmployeeFragment" />
+        <action
+            android:id="@+id/action_employeeListFragment_to_updateEmployeeFragment"
+            app:destination="@id/updateEmployeeFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addNewEmployeeFragment"
+        android:name="com.example.roomsample.ui.AddNewEmployeeFragment"
+        android:label="Add new employee"
+        tools:layout="@layout/fragment_add_new_employee">
+        <action
+            android:id="@+id/action_addNewEmployeeFragment_to_employeeListFragment"
+            app:destination="@id/employeeListFragment"
+            app:popUpTo="@+id/employeeListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.roomsample.ui.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_employeeListFragment"
+            app:destination="@id/employeeListFragment"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateEmployeeFragment"
+        android:name="com.example.roomsample.ui.UpdateEmployeeFragment"
+        android:label="Update Employee"
+        tools:layout="@layout/fragment_update_employee">
+        <action
+            android:id="@+id/action_updateEmployeeFragment_to_employeeListFragment"
+            app:destination="@id/employeeListFragment"
+            app:popUpTo="@+id/employeeListFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+</navigation>
