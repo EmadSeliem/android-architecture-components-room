@@ -1,23 +1,24 @@
 package com.example.roomsample.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SmallTest
 import com.example.roomsample.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import javax.inject.Inject
+import javax.inject.Named
 
 @ExperimentalCoroutinesApi
-@RunWith(JUnit4::class)
+@HiltAndroidTest
 @SmallTest
+
 class EmployeeDaoTest {
 
     /**
@@ -27,15 +28,18 @@ class EmployeeDaoTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+    @Inject
+    @Named("employee_DB")
     lateinit var appDataBase: AppDataBase
+
     lateinit var emloyeeDao: EmployeeDao
 
     @Before
     fun setup() {
-        appDataBase = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(),
-            AppDataBase::class.java
-        ).allowMainThreadQueries().build()
+        hiltRule.inject()
         emloyeeDao = appDataBase.employeeDao()
     }
 

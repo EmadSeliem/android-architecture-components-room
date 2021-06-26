@@ -36,7 +36,7 @@ class UpdateEmployeeFragment : Fragment() {
                 inflater, R.layout.fragment_update_employee, container, false
             )
         employee = arguments?.getParcelable<Employee>("employee")!!
-        if (employee != null) updateEmployeeViewModel.setData(employee)
+        updateEmployeeViewModel.setData(employee)
         dataBinding.updateEmployeeViewModel = updateEmployeeViewModel
         setHasOptionsMenu(true)
         return dataBinding.root
