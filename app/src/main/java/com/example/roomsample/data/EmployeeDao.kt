@@ -10,7 +10,7 @@ interface EmployeeDao {
     @Query("SELECT * from Employee ORDER BY id ASC")
     fun getAllEmployees(): LiveData<List<Employee>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEmployee(employee: Employee)
 
     @Query("DELETE FROM Employee")
